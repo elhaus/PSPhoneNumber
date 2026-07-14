@@ -1,3 +1,4 @@
 /build/obj
 /build/bin
 /test/Test.ps1
+.DS_Store
