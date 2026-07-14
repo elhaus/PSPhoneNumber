@@ -1,0 +1,10 @@
+version: 2
+updates:
+  - package-ecosystem: "nuget"
+    # the directory containing your .csproj file
+    directory: "/build" 
+    schedule:
+      interval: "daily"
+    labels:
+      - "dependencies"
+      - "automated-pr"

@@ -1,0 +1,63 @@
+name: Compile Dependabot Updates
+
+on:
+  pull_request:
+    paths:
+      - 'build/**/*.csproj' # Only run when the C# project file changes
+
+jobs:
+  build-and-commit:
+    # ONLY run this if Dependabot opened the PR
+    if: github.actor == 'dependabot[bot]'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # Required to push commits to the PR branch
+
+    steps:
+      - name: Checkout PR Branch
+        uses: actions/checkout@v4
+        with:
+          # Crucial: Check out the actual branch Dependabot created, not the PR merge commit
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0 
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup .NET SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0'
+
+      - name: Rebuild DLLs
+        shell: pwsh
+        run: |
+          cd build
+          dotnet publish -c Release
+          cd ..
+          
+          Remove-Item -Path "src/lib/*.dll" -Force -ErrorAction SilentlyContinue
+          Copy-Item -Path "build/bin/Release/netstandard2.0/publish/PhoneNumbers.dll" -Destination "src/lib/" -Force
+          Copy-Item -Path "build/bin/Release/netstandard2.0/publish/System.Collections.Immutable.dll" -Destination "src/lib/" -Force
+
+      - name: Sync .psd1 ModuleVersion
+        shell: pwsh
+        run: |
+          $dllPath = "src/lib/PhoneNumbers.dll"
+          $assemblyVersion = [System.Diagnostics.FileVersionInfo]::GetVersionInfo((Resolve-Path $dllPath).Path).ProductVersion
+          
+          if ($assemblyVersion -match "^\d+\.\d+\.\d+(\.\d+)?") {
+              $newVersion = $Matches[0]
+          } else {
+              Write-Error "Could not parse version from assembly."
+              exit 1
+          }
+          
+          $Psd1Path = "src/PSPhoneNumber.psd1"
+          Update-ModuleManifest $Psd1Path -ModuleVersion $newVersion
+          
+          Write-Host "Synced .psd1 version to $newVersion"
+
+      - name: Commit changes back to Dependabot PR
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: compile binaries and sync manifest version"
+          file_pattern: 'PSPhoneNumber/lib/*.dll PSPhoneNumber/PSPhoneNumber.psd1'
