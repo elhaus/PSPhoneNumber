@@ -36,6 +36,7 @@ jobs:
           
           Remove-Item -Path "PSPhoneNumber/lib/*.dll" -Force -ErrorAction SilentlyContinue
           Copy-Item -Path "build/bin/Release/netstandard2.0/publish/PhoneNumbers.dll" -Destination "PSPhoneNumber/lib/" -Force
+          Copy-Item -Path "build/bin/Release/netstandard2.0/publish/System.Collections.Immutable.dll" -Destination "PSPhoneNumber/lib/" -Force
 
       - name: Sync .psd1 ModuleVersion
         shell: pwsh

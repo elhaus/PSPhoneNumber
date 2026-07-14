@@ -12,7 +12,7 @@
 RootModule = 'PSPhoneNumber.psm1'
 
 # Version number of this module.
-ModuleVersion = '9.0.34'
+ModuleVersion = '9.0.34.1'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -54,7 +54,7 @@ PowerShellVersion = '5.1'
 # RequiredModules = @()
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = 'lib\PhoneNumbers.dll'
+RequiredAssemblies = 'lib\System.Collections.Immutable.dll', 'lib\PhoneNumbers.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
