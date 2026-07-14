@@ -17,36 +17,36 @@ Describe 'Convert-PhoneNumber' {
     }
 }
 
-Describe 'Get-PhoneNumberDetails' {
+Describe 'Get-PhoneNumberDetail' {
     It 'Checking Details for DE (0)152 28895456' {
-        $Details = Get-PhoneNumberDetails -Number "(0)152 28895456" -DefaultRegion "DE"
+        $Details = Get-PhoneNumberDetail -Number "(0)152 28895456" -DefaultRegion "DE"
         $Details.InternationalFormat | Should-BeString "+49 1522 8895456"
         $Details.Carrier | Should-BeString "Vodafone"
         $Details.Location | Should-BeString "Germany"
         $Details.Type | Should-BeString "MOBILE"
     }
     It 'Checking Details for DE 040-66969 123' {
-        $Details = Get-PhoneNumberDetails -Number "040-66969 123" -DefaultRegion "DE"
+        $Details = Get-PhoneNumberDetail -Number "040-66969 123" -DefaultRegion "DE"
         $Details.InternationalFormat | Should-BeString "+49 40 66969123"
         $Details.Location | Should-BeString "Hamburg"
         $Details.Type | Should-BeString "FIXED_LINE"
     }
     It 'Checking Details for FR +33 6 39 98 12 34' {
-        $Details = Get-PhoneNumberDetails -Number "+33 2 61 91 12 34" -DefaultRegion "FR" -OutputLanguage German
+        $Details = Get-PhoneNumberDetail -Number "+33 2 61 91 12 34" -DefaultRegion "FR" -OutputLanguage German
         $Details.InternationalFormat | Should-BeString "+33 2 61 91 12 34"
         $Details.Location | Should-BeString "Frankreich"
         $Details.TimeZone | Should-BeString "Europe/Paris"
         $Details.Type | Should-BeString "FIXED_LINE"
     }
     It 'Checking Details for SE 070-1740605' {
-        $Details = Get-PhoneNumberDetails -Number "070-1740605" -DefaultRegion "SE"
+        $Details = Get-PhoneNumberDetail -Number "070-1740605" -DefaultRegion "SE"
         $Details.InternationalFormat | Should-BeString "+46 70 174 06 05"
         $Details.Location | Should-BeString "Sweden"
         $Details.TimeZone | Should-BeString "Europe/Stockholm"
         $Details.Type | Should-BeString "MOBILE"
     }
     It 'Checking Details for GB 020 7946 1234' {
-        $Details = Get-PhoneNumberDetails -Number "020 7946 1234" -DefaultRegion "GB"
+        $Details = Get-PhoneNumberDetail -Number "020 7946 1234" -DefaultRegion "GB"
         $Details.InternationalFormat | Should-BeString "+44 20 7946 1234"
         $Details.Location | Should-BeString "London"
         $Details.TimeZone | Should-BeString "Europe/London"

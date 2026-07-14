@@ -66,7 +66,7 @@ Convert-PhoneNumber -Number "020 79461234" -DefaultRegion "GB" -Format E164
 Extract rich metadata from a number, including its geolocation, timezone, and carrier. You can pipe numbers directly into this command!
 
 ```powershell
-Get-PhoneNumberDetails -Number "+442079461234"
+Get-PhoneNumberDetail -Number "+442079461234"
 ```
 
 **Output:**
@@ -94,7 +94,7 @@ Location                  : London
 | --- | --- |
 | `Test-PhoneNumber` | Returns `$true` or `$false` if the provided string is a valid phone number. |
 | `Format-PhoneNumber` | Rewrites a raw phone string into a clean target format (E164, National, etc.). |
-| `Get-PhoneNumberDetails` | Returns a customized PowerShell object with location, carrier, and formatting metadata. |
+| `Get-PhoneNumberDetail` | Returns a customized PowerShell object with location, carrier, and formatting metadata. |
 
 ---
 

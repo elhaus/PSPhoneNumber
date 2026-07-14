@@ -23,18 +23,18 @@
 .OUTPUTS
     [PSCustomObject] containing parsed validation, formatting, regional, carrier, and timezone information.
 .EXAMPLE
-    Get-PhoneNumberDetails -Number "+442079461234"
+    Get-PhoneNumberDetail -Number "+442079461234"
     
     Validates and resolves a UK landline, returning its English location ("London"), 
     timezones, and standard formatting variations.
 .EXAMPLE
-    "0171-39200 00", "+49 221-4710 000" | Get-PhoneNumberDetails -DefaultRegion "DE" -OutputLanguage "German"
+    "0171-39200 00", "+49 221-4710 000" | Get-PhoneNumberDetail -DefaultRegion "DE" -OutputLanguage "German"
     
     Processes German phone numbers via the pipeline, resolving localized German names 
     for locations and mobile carriers.
 #>
 
-function Get-PhoneNumberDetails {
+function Get-PhoneNumberDetail {
     [CmdletBinding()]
     param (
         [Parameter(Mandatory = $true, ValueFromPipeline = $true)]
