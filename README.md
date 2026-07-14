@@ -113,7 +113,7 @@ Pull requests are welcome! If you want to build the module locally:
 1. Clone this repository.
 2. Ensure you have the [.NET](https://dotnet.microsoft.com/download) installed.
 3. Run `dotnet publish -c Release -f netstandard2.0` inside the `build/` directory.
-4. Copy the compiled DLLs into `src/lib/`.
+4. Copy the compiled DLLs into `PSPhoneNumberhoneNumber/lib/`.
 
 ## 📜 License
 

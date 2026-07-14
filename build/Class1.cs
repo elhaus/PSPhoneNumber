@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace src
+namespace PSPhoneNumber
 {
     public class Class1
     {

@@ -34,13 +34,13 @@ jobs:
           dotnet publish -c Release
           cd ..
           
-          Remove-Item -Path "src/lib/*.dll" -Force -ErrorAction SilentlyContinue
-          Copy-Item -Path "build/bin/Release/netstandard2.0/publish/PhoneNumbers.dll" -Destination "src/lib/" -Force
+          Remove-Item -Path "PSPhoneNumber/lib/*.dll" -Force -ErrorAction SilentlyContinue
+          Copy-Item -Path "build/bin/Release/netstandard2.0/publish/PhoneNumbers.dll" -Destination "PSPhoneNumber/lib/" -Force
 
       - name: Sync .psd1 ModuleVersion
         shell: pwsh
         run: |
-          $dllPath = "src/lib/PhoneNumbers.dll"
+          $dllPath = "PSPhoneNumber/lib/PhoneNumbers.dll"
           $assemblyVersion = [System.Diagnostics.FileVersionInfo]::GetVersionInfo((Resolve-Path $dllPath).Path).ProductVersion
           
           if ($assemblyVersion -match "^\d+\.\d+\.\d+(\.\d+)?") {
@@ -50,7 +50,7 @@ jobs:
               exit 1
           }
           
-          $Psd1Path = "src/PSPhoneNumber.psd1"
+          $Psd1Path = "PSPhoneNumber/PSPhoneNumber.psd1"
           Update-ModuleManifest $Psd1Path -ModuleVersion $newVersion
           
           Write-Host "Synced .psd1 version to $newVersion"
@@ -59,4 +59,4 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "chore: compile binaries and sync manifest version"
-          file_pattern: 'src/lib/*.dll src/PSPhoneNumber.psd1'
+          file_pattern: 'PSPhoneNumber/lib/*.dll PSPhoneNumber/PSPhoneNumber.psd1'

@@ -4,7 +4,7 @@
 #>
 
 BeforeAll {
-    Import-Module "./src/PSPhoneNumber.psd1" -Force
+    Import-Module "./PSPhoneNumber/PSPhoneNumber.psd1" -Force
 }
 
 
