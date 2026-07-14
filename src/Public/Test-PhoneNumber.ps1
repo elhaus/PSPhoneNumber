@@ -29,6 +29,7 @@
 #>
 function Test-PhoneNumber {
     [CmdletBinding()]
+    [OutputType([bool])]
     param (
         [Parameter(Mandatory = $true, ValueFromPipeline = $true)]
         [string]$Number,

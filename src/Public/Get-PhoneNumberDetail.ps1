@@ -36,7 +36,6 @@
 
 function Get-PhoneNumberDetail {
     [CmdletBinding()]
-    [OutputType([bool])]
     param (
         [Parameter(Mandatory = $true, ValueFromPipeline = $true)]
         [string]$Number,
