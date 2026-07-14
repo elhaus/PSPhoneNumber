@@ -2,7 +2,7 @@
 .SYNOPSIS
     Retrieves comprehensive metadata, formatting, and geographic details for a phone number.
 .DESCRIPTION
-    Parses a phone number string using Google's libphonenumber library and aggregates its 
+    Parses a phone number string using Google's libphonenumber library and aggregates its
     underlying properties into a single PowerShell custom object.
 
     It fetches:
@@ -14,23 +14,23 @@
 .PARAMETER Number
     The raw phone number string to analyze. This parameter accepts input from the pipeline.
 .PARAMETER DefaultRegion
-    The ISO 3166-1 alpha-2 two-letter country code (e.g., 'US', 'GB', 'DE') used as a fallback 
+    The ISO 3166-1 alpha-2 two-letter country code (e.g., 'US', 'GB', 'DE') used as a fallback
     to parse local/national number formats that lack an international country dial code prefix (+).
 .PARAMETER OutputLanguage
-    Specifies the locale language for the geocoded 'Location' and 'Carrier' fields. 
+    Specifies the locale language for the geocoded 'Location' and 'Carrier' fields.
     Supported values are: 'English', 'French', 'German', 'Italian', 'Korean', and 'SimplifiedChinese'.
     Defaults to 'English'.
 .OUTPUTS
     [PSCustomObject] containing parsed validation, formatting, regional, carrier, and timezone information.
 .EXAMPLE
     Get-PhoneNumberDetail -Number "+442079461234"
-    
-    Validates and resolves a UK landline, returning its English location ("London"), 
+
+    Validates and resolves a UK landline, returning its English location ("London"),
     timezones, and standard formatting variations.
 .EXAMPLE
     "0171-39200 00", "+49 221-4710 000" | Get-PhoneNumberDetail -DefaultRegion "DE" -OutputLanguage "German"
-    
-    Processes German phone numbers via the pipeline, resolving localized German names 
+
+    Processes German phone numbers via the pipeline, resolving localized German names
     for locations and mobile carriers.
 #>
 
