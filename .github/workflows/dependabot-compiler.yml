@@ -60,4 +60,4 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "chore: compile binaries and sync manifest version"
-          file_pattern: 'PSPhoneNumber/lib/*.dll PSPhoneNumber/PSPhoneNumber.psd1'
+          file_pattern: 'src/lib/*.dll src/PSPhoneNumber.psd1'
