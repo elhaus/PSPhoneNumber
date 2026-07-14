@@ -98,7 +98,7 @@ PrivateData = @{
         Tags = 'libphonenumber','phonenumber','formatting'
 
         # A URL to the license for this module.
-        # LicenseUri = ''
+        LicenseUri = 'https://github.com/elhaus/PSPhoneNumber/blob/main/LICENSE'
 
         # A URL to the main website for this project.
         ProjectUri = 'https://github.com/elhaus/PSPhoneNumber'
