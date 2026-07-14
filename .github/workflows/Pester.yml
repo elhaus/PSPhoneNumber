@@ -11,4 +11,6 @@ jobs:
       - name: Perform a Pester test from the PSPhoneNumber.Test.ps1 file
         shell: pwsh
         run: |
+          Install-Module Pester -Force
+          Import-Module Pester -Force
           Invoke-Pester "./test/PSPhoneNumber.Test.ps1" -Passthru
