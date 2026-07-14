@@ -9,13 +9,10 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v7
-      - name: Build project
-        run: |
-          mkdir build
       - name: Create artifact
         uses: montudor/action-zip@v1
         with:
-          args: zip -X -r build/${{ github.event.repository.name }}.zip src
+          args: zip -X -r build/${{ github.event.repository.name }}.zip PSPhoneNumber
       - name: Upload artifact
         uses: actions/upload-artifact@v7
         with:
