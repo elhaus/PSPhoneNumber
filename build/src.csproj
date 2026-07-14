@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="libphonenumber-csharp" Version="9.0.33" />
+    <PackageReference Include="libphonenumber-csharp" Version="9.0.34" />
   </ItemGroup>
 
 </Project>
