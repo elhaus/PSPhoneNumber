@@ -117,7 +117,7 @@ Pull requests are welcome! If you want to build the module locally:
 
 ## 📜 License
 
-This project is licensed under the [MIT License](https://www.google.com/search?q=LICENSE).
+This project is licensed under the [Apache License 2.0](LICENSE).
 
 * Powered by [libphonenumber-csharp](https://github.com/twcclegg/libphonenumber-csharp) (Apache License 2.0).
 * Originally based on Google's [libphonenumber](https://github.com/google/libphonenumber).
