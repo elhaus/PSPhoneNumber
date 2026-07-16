@@ -93,7 +93,7 @@ Location                  : London
 | Cmdlet | Description |
 | --- | --- |
 | `Test-PhoneNumber` | Returns `$true` or `$false` if the provided string is a valid phone number. |
-| `Format-PhoneNumber` | Rewrites a raw phone string into a clean target format (E164, National, etc.). |
+| `Convert-PhoneNumber` | Rewrites a raw phone string into a clean target format (E164, National, etc.). |
 | `Get-PhoneNumberDetail` | Returns a customized PowerShell object with location, carrier, and formatting metadata. |
 
 ---
