@@ -27,7 +27,7 @@ Author = 'Jan Elhaus'
 CompanyName = ''
 
 # Copyright statement for this module
-Copyright = '(c) Jan Elhause. All rights reserved.'
+Copyright = '(c) Jan Elhaus. All rights reserved.'
 
 # Description of the functionality provided by this module
 Description = 'PowerShell implementation for libphonenumber'
