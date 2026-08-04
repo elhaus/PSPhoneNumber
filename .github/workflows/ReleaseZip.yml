@@ -4,23 +4,23 @@ on:
     types: [published]
 jobs:
   build:
-    name: prepare and upload release Asset
+    name: Prepare and Upload Release Asset
     runs-on: ubuntu-latest
+    permissions:
+      contents: write 
     steps:
       - name: Checkout code
         uses: actions/checkout@v7
-      - name: Create artifact
-        uses: montudor/action-zip@v1
-        with:
-          args: zip -X -r build/${{ github.event.repository.name }}.zip PSPhoneNumber
-      - name: Upload artifact
+      - name: Create ZIP archive
+        run: |
+          zip -X -r "build/${{ github.event.repository.name }}.zip" PSPhoneNumber
+      - name: Upload to Workflow Artifacts
         uses: actions/upload-artifact@v7
         with:
-            name: graphql-api
-            path: "build/${{ github.event.repository.name }}.zip"
-      - name: Upload to release
-        uses: JasonEtco/upload-to-release@master
-        with:
-          args: "build/${{ github.event.repository.name }}.zip application/zip"
+          name: PSPhoneNumber-Archive
+          path: "build/${{ github.event.repository.name }}.zip"
+      - name: Upload to GitHub Release
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release upload "${{ github.event.release.tag_name }}" "build/${{ github.event.repository.name }}.zip"
