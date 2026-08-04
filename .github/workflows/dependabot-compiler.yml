@@ -15,12 +15,12 @@ jobs:
 
     steps:
       - name: Checkout PR Branch
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           # Crucial: Check out the actual branch Dependabot created, not the PR merge commit
           ref: ${{ github.head_ref }}
           fetch-depth: 0 
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.DEPENDABOT_CI_TOKEN }}
 
       - name: Setup .NET SDK
         uses: actions/setup-dotnet@v4
