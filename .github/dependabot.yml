@@ -4,7 +4,7 @@ updates:
     # the directory containing your .csproj file
     directory: "/build" 
     schedule:
-      interval: "daily"
+      interval: "monthly"
     labels:
       - "dependencies"
       - "automated-pr"
